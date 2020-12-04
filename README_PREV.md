@@ -1,72 +1,27 @@
-# Jinja2 templates
+# Flask-Bootstrap
 [README_PREV.md](./README_PREV.md)
 
-* [Flask docs - Rendering Templates][]
-* [Jinja2 docs - Rendering Templates][]
+## Bootstrap
+Designed for everyone, everywhere
 
+Bootstrap makes front-end web development faster and easier.
+It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.
 
-## Variables
-* [Jinja2 docs - Variables][]
+[getbootstrap][]
 
-### Filters
-* [Jinja2 docs - Filters][]
-* [Jinja2 docs - List of Builtin Filters][]
-```
-{{ "stRanGE sTRing"|lower }}
-```
+## New requirement
+~~[FlaskBootstrap - Basic Usage][]~~
 
-## Template Inheritance
-* [Jinja2 docs - Template Inheritance][]
-* Make `index.html` based on `base.html`
+[BootstrapFlask - Basic Usage][]
 
-## Control Structures
-* [Jinja2 docs - List of Control Structures][]
+### Let's make page display properly
+Add proper `load_css` and `load_js` commands.
 
-### Interesting structures
-* For loop
-* If statement
-* Assignments 
+## Assignment
+* Use `profile.html` as extension of `base.html`
+* Render html list of names with [Bootstrap List group][]
 
-## Assignments
-### Use `render_template` in `profile` endpoint
-Instead of simply returning string - render jinja template (you'll have to create new `.html` file).  
-Display corresponding message.
-
-### Use `for` loop in `profile` template.
-Update new template of `profile` endpoint, which will display `name` value `anount` times using html list.
-* [Statements doc - for][]
-* [HTML unordered list doc][]
-
-Tips!:
-* Python loop iterating n times: `for _ in range(n):`
-* `amount` passed from kwargs is of type str (must be converted to int `int(amount)`)
-* Inside of control structures you don't have to use `{{ }}` brackets in order to access variables.
-
-### Use `if` statement in `profile` template.
-If `name` pased to `hello_from_kwargs` equals `Admin` - display name only once.  
-All other names should work as before.
-
-Additionally wrap every second name in list with `<strong>This text is important!</strong>`
-
-* [Statements doc - if](https://jinja2docs.readthedocs.io/en/stable/templates.html#if)
-* [HTML strong tag doc](https://www.w3schools.com/tags/tag_strong.asp)
-
-Tips!:
-* use `loop.index` and check modulo 2 to detect even / odd elements
-
-### Use `filters`
-* Make sure that we won't use for loop for any "admin" variation (ADMIN, Admin, aDmin, aDMIn).
-* Truncate name to 10 characters
-
-
-[Flask docs - Rendering Templates]: https://flask.palletsprojects.com/en/2.1.x/quickstart/#rendering-templates
-[Jinja2 docs - Rendering Templates]: https://jinja.palletsprojects.com/en/3.1.x/templates/
-[Jinja2 docs - Variables]: https://jinja.palletsprojects.com/en/3.1.x/templates/#variables
-[Jinja2 docs - Filters]: https://jinja.palletsprojects.com/en/3.1.x/templates/#filters
-[Jinja2 docs - Template Inheritance]: https://jinja.palletsprojects.com/en/3.1.x/templates/#template-inheritance
-[Jinja2 docs - List of Builtin Filters]: https://tedboy.github.io/jinja2/templ14.html
-[Jinja2 docs - List of Control Structures]: https://jinja.palletsprojects.com/en/3.1.x/templates/#list-of-control-structures
-[Statements doc - for]: https://jinja.palletsprojects.com/en/3.1.x/templates/#for
-[Statements doc - if]: https://jinja.palletsprojects.com/en/3.1.x/templates/#if
-[HTML unordered list doc]: https://www.w3schools.com/HTML/html_lists.asp
-[HTML strong tag doc]: https://www.w3schools.com/tags/tag_strong.asp
+[getbootstrap]: https://getbootstrap.com/
+[FlaskBootstrap - Basic Usage]: https://pythonhosted.org/Flask-Bootstrap/basic-usage.html
+[BootstrapFlask - Basic Usage]: https://bootstrap-flask.readthedocs.io/en/stable/basic/
+[Bootstrap List group]: https://getbootstrap.com/docs/5.2/components/list-group/
