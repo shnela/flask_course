@@ -45,3 +45,6 @@ venv
 .idea
 # Visual Studio Code
 .vscode
+
+# SQLite db
+*.db
