@@ -43,3 +43,5 @@ venv
 
 # PyCharm
 .idea
+# Visual Studio Code
+.vscode

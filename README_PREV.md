@@ -1,74 +1,44 @@
-# Flask-WTF
+# Flask-WTF - revision
 
 [README_PREV.md](./README_PREV.md)
+(I'm cheating - it's readme_prev_prev, but haven't done anything interesting recently)
 
-## New requirements
-* [Flask-WTF][]
-* Already placed in `requirements.txt`
-  * pyCharm will  install automatically
-  * for console or other IDE `$ pip install -r requirements.txt`
+[Flask - Uploading Files][]
+1. A `<form>` tag is marked with `enctype=multipart/form-data` and an `<input type=file>` is placed in that form.
+1. The application accesses the file from the files dictionary on the request object.
+1. use the save() method of the file to save the file permanently somewhere on the filesystem.
 
-### Flask-WTF is based on WTF-Forms
-[WTF-Forms][]
 
-### `__init__.py` is updated
-* [WTF-Forms - Basic fields][]
-* [WTF-Forms - Built-in validators][]
+## Current dir
+Instruction in `auxiliary_code/python_path.py`
 
-## Prerequisite 
-SECRET_KEY required (https://pinetools.com/random-string-generator)
-Add it in pyCharm config run.
+## Problem with `regexp_validator`
+Replace it with
+```python
+def validate_input_data(self, field):
+    data = field.data
+    if not data or not data.filename.endswith('.csv'):
+        raise ValidationError('Only csv files allowed')
+```
 
-## Session example
-[Session]
+## Save file
+```python
+file = form.input_data.data
+filename = secure_filename(file.filename)
+file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+```
 
-How we store form info in session.
+Where I got it from? Show debugger.
+
 
 ## Assignment
-1. Add new link in navbar, link should point to `login` view.
-2. Add new field in form - `age` and save value in `session`.
-This field should be positive integer, so IntegerField and NumberRange should be used.
-If `age` isn't present in session - display 0.
-Test form with missing data, negative values and strings instead of int.
-After sending ('user1', 43), we should be redirected to `index` which will display "Hello fasada (32)!"
-
-
-## Integration Flask-WTF with Flask-Bootstrap
-We're using [Flask-WTF - Creating Forms][] for generating `LoginForm` in `main.py`.  
-We're struggling with displaying it in `login.html`.
-
-Let's integrate `Flask-WTF` with [Bootstrap-flask integration][]
-
-### Why?
-#### More beautiful
-[Bootstrap forms][] - looks nice
-
-#### Simpler to use in html
+Save recently uploaded `filename` in session and display it's name in index.  
+Add new view `download` which will use [Flask - send_from_directory][] and returns the file.  
+Add `<a>` in `index` which will be responsible for downloading csv.
 ```html
-<form method="POST">
-  {{ wtf.render_form(form) }}
-</form>
+<a href="{{ url_for('download') }}">download file ({{ session.filename }})</a>
 ```
 
-But first [Bootstrap-flask WTF macros][] is required.
-```html
-{% import 'bootstrap5/form.html' as wtf %}
-```
-Add it to `base.html`
 
-## Assignments
-* Display name of logged in user in bottom left corner, or 'Unknown'
-* Implement logout view which will remove `name` and `age` keys from session
-Then link new view to "Log out" button in right top corner.
-This should be simple GET function (no form required)
-(use `del`)
-
-[Flask-WTF]: https://flask-wtf.readthedocs.io/en/1.0.x/
-[WTF-Forms]: https://wtforms.readthedocs.io/en/3.0.x/
-[WTF-Forms - Basic fields]: https://wtforms.readthedocs.io/en/3.0.x/fields/#basic-fields
-[WTF-Forms - Built-in validators]: https://wtforms.readthedocs.io/en/3.0.x/validators/#built-in-validators
-[Flask-WTF - Creating Forms]: https://flask-wtf.readthedocs.io/en/1.0.x/quickstart.html#creating-forms
-[Bootstrap-flask integration]: https://bootstrap-flask.readthedocs.io/en/stable/basic/
-[Bootstrap forms]: https://getbootstrap.com/docs/5.2/forms/overview/
-[Bootstrap-flask WTF macros]: https://bootstrap-flask.readthedocs.io/en/stable/macros/
-[Session]: https://flask.palletsprojects.com/en/2.1.x/api/#flask.session
+[Flask - Uploading Files]: https://flask.palletsprojects.com/en/2.1.x/patterns/fileuploads/
+[Flask - send_from_directory]: https://flask.palletsprojects.com/en/2.1.x/api/#flask.send_from_directory
