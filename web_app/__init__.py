@@ -1,6 +1,8 @@
 from flask import Flask, render_template
+from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
+bootstrap = Bootstrap5(app)
 
 
 @app.route('/')
@@ -12,6 +14,6 @@ def index():
     return render_template('index.html', user_info=user_info)
 
 
-@app.route('/user/<username>/<amount>/')
+@app.route('/user/<username>/<int:amount>/')
 def profile(username, amount):
-    return f"<h1>{username}'s profile ({amount})</h1>"
+    return render_template('profile.html', username=username, amount=amount)
