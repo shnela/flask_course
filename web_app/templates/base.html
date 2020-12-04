@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% import 'bootstrap5/form.html' as wtf %}
+{% from 'bootstrap5/utils.html' import render_icon %}
 
 <head>
   <meta charset="UTF-8">
@@ -28,16 +29,11 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
-              Users hardcoded pages
+              Users info
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="{{ url_for('profile', username='Andrzej', amount=2) }}">Andrzej 2</a>
-              </li>
-              <li><a class="dropdown-item" href="{{ url_for('profile', username='admin', amount=2) }}">admin 2</a></li>
-              <li><a class="dropdown-item" href="{{ url_for('profile', username='krzys', amount=10) }}">krzys 10</a>
-              </li>
-              <li><a class="dropdown-item" href="{{ url_for('profile', username='Pollena', amount=2000) }}">Pollena
-                  2000</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('users') }}">Users</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('user_add') }}"> {{ render_icon('plus') }} Add user</a></li>
             </ul>
           </li>
           <li class="nav-item">

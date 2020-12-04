@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/pagination.html' import render_pagination %}
+
+{% block custom_content %}
+
+  {{ render_pagination(users_paginator) }}
+  <ul class="list-group">
+    {% for user in users %}
+      <li class="list-group-item">
+        <a href="{{ url_for('user_details', user_id=user.id) }}">{{ user.id }}</a> {{ user.username }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
