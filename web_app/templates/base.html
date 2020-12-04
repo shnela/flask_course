@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <title>Our page</title>
 
+  {% block styles %}
+  <!-- Bootstrap CSS -->
+  {{ bootstrap.load_css() }}
+  {% endblock %}
+
 </head>
 
 <body>
@@ -40,11 +45,23 @@
   </nav>
   {% endblock navbar %}
 
-  <h1>Simple Flask page</h1>
   {% block body %}
-  <div>Default body block</div>
+  <main>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-19 mx-auto">
+          {% block custom_content %}
+          {% endblock %}
+        </div>
+      </div>
+    </section>
+  </main>
   {% endblock %}
 
+  {% block scripts %}
+  <!-- Optional JavaScript -->
+  {{ bootstrap.load_js() }}
+  {% endblock %}
 </body>
 
 </html>
