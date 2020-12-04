@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% import 'bootstrap5/form.html' as wtf %}
 
 <head>
   <meta charset="UTF-8">
@@ -47,7 +48,6 @@
     </div>
   </nav>
   {% endblock navbar %}
-
   {% block body %}
   <main>
     <section class="py-5 text-center container">
@@ -61,11 +61,6 @@
   </main>
   {% endblock %}
 
-  {% block scripts %}
-  <!-- Optional JavaScript -->
-  {{ bootstrap.load_js() }}
-  {% endblock %}
-
   <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
 
@@ -76,13 +71,19 @@
               aria-expanded="false">User</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown10">
               <li><a class="dropdown-item" href="{{ url_for('login') }}">Log in</a></li>
-              <li><a class="dropdown-item" href="#">Log out</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout') }}">Log out</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  {% block scripts %}
+  <!-- Optional JavaScript -->
+  {{ bootstrap.load_js() }}
+  {% endblock %}
+  
 </body>
 
 </html>
