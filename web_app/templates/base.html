@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 {% import 'bootstrap5/form.html' as wtf %}
-{% from 'bootstrap5/utils.html' import render_icon %}
+{% from 'bootstrap5/utils.html' import render_icon, render_static %}
 
 <head>
   <meta charset="UTF-8">
   <title>Our page</title>
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/flask-icon.png') }}"/>
 
   {% block styles %}
   <!-- Bootstrap CSS -->

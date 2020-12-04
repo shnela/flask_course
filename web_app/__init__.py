@@ -21,3 +21,5 @@ basic_auth = BasicAuth(app)
 # blueprints registration
 from .main import bp as main_bp
 app.register_blueprint(main_bp)
+from .error_examples import bp as error_examples_bp
+app.register_blueprint(error_examples_bp)

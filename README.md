@@ -1,13 +1,17 @@
-# Recommendations
+# Custom error pages and static files
+[README_PREVIOUS.md](./README_PREVIOUS.md)
 
-## Basic
-* [Effective Python](https://effectivepython.com/)
-* Flask by Miguel:
-  * [Flask Web development](https://flaskbook.com/#)
-  * [The Flask Mega-Tutorial Part](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
-    * quite related to this course, but uses some deprecated libraries like Flask-Bootstrap
-  * [Don't make me think](https://www.amazon.com/Dont-Make-Think-Revisited-Usability/dp/0321965515)
+Static files - overridden favicon.
+[Flask - static files][]
+Error codes https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
-## More advanced
-* [Effective Python](https://effectivepython.com/) (latter chapters)
-* [SQL Performance Explained](https://sql-performance-explained.com/) and [meme](https://www.reddit.com/r/SQL/comments/hpjij2/sql_performance_explained_expectations_vs_reality/)
+### Handle errors
+http://127.0.0.1:5000/return_error/404/ isn't handled
+http://127.0.0.1:5000/abort_error/404/ is
+
+## Assignments
+* Download gif used in 404.html as "vincent404.gif" and serve it as static file in 404 handler
+* Handle internal_server_error (500) with custom template
+
+
+[Flask - static files]: https://flask.palletsprojects.com/en/2.1.x/tutorial/static/#static-files
