@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
   {% block navbar %}
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -31,8 +30,11 @@
               Users info
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="{{ url_for('main.index') }}">Index page</a></li>
               <li><a class="dropdown-item" href="{{ url_for('main.users') }}">Users</a></li>
-              <li><a class="dropdown-item" href="{{ url_for('main.user_add') }}"> {{ render_icon('plus') }} Add user</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('main.user_add') }}">{{ render_icon('plus') }} Add user</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('main.post_add') }}">{{ render_icon('plus') }} Add post</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('main.upload') }}">Upload file</a></li>
             </ul>
           </li>
           <li class="nav-item">

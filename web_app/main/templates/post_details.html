@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+
+{% block custom_content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {{ render_breadcrumb_item('main.users', 'Users') }}
+    {{ render_breadcrumb_item('main.user_details', 'User details', user_id=post.user.id) }}
+    {{ render_breadcrumb_item('main.post_details', 'Post details', psot_id=post.id) }}
+  </ol>
+</nav>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    Id: {{ post.id }}
+  </li>
+  <li class="list-group-item">
+    Created at: {{ post.creation_date }}
+  </li>
+  <li class="list-group-item">
+    Author: {{ post.user.username }}
+  </li>
+</ul>
+
+<div>{{ post.content }}</div>
+{% endblock %}
