@@ -48,3 +48,6 @@ venv
 
 # SQLite db
 *.db
+
+# environ
+deployment/environment.env
