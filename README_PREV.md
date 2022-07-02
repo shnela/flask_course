@@ -1,27 +1,27 @@
-# Flask-Bootstrap
+# Application context, request context and `url_for`
+
 [README_PREV.md](./README_PREV.md)
 
-## Bootstrap
-Designed for everyone, everywhere
+## Context
+* Just show request for `index` endpoint
+* [The Application Context][]
+* [The Request Context][]
 
-Bootstrap makes front-end web development faster and easier.
-It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.
-
-[getbootstrap][]
-
-## New requirement
-~~[FlaskBootstrap - Basic Usage][]~~
-
-[BootstrapFlask - Basic Usage][]
-
-### Let's make page display properly
-Add proper `load_css` and `load_js` commands.
+## Url_for
+https://flask.palletsprojects.com/en/1.1.x/api/?highlight=url_for#flask.url_for
 
 ## Assignment
-* Use `profile.html` as extension of `base.html`
-* Render html list of names with [Bootstrap List group][]
+* Override `index`'s user_info with `name` and `age` passed as request get argument.
+```python
+request.args.get(<key>, <default>)
+```
+If no such parameter, keep default values.
+Use `request.args`.
+  * For http://127.0.0.1:5000/?username=chris&age=10 view should render "Hello chris (10)!"
+  * For http://127.0.0.1:5000/?age=10 view should render "Hello Mike (10)!"
+  * For http://127.0.0.1:5000/?dummy_arg=fasada view should render "Hello Mike (42)!"
+  
+* Replace all static href from `base.html` with urls rendered with `url_for`
 
-[getbootstrap]: https://getbootstrap.com/
-[FlaskBootstrap - Basic Usage]: https://pythonhosted.org/Flask-Bootstrap/basic-usage.html
-[BootstrapFlask - Basic Usage]: https://bootstrap-flask.readthedocs.io/en/stable/basic/
-[Bootstrap List group]: https://getbootstrap.com/docs/5.2/components/list-group/
+[The Application Context]: https://flask.palletsprojects.com/en/1.1.x/appcontext/
+[The Request Context]: https://flask.palletsprojects.com/en/1.1.x/reqcontext/
