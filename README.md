@@ -30,20 +30,34 @@ organization with the goal to maintain and improve those libraries.
 * But both are popular: [Flask](https://stackshare.io/flask) vs [Django](https://stackshare.io/django)
 * Flask is easier to gasp
 
+## Prerequisites
+* Knowledge about python virtualenv
+* Knowledge about python modules
+* Knowledge about environment variables
+
 ## Let's run it
-* In cygwin
-* In Ubuntu  
+* In Console  
 * And pyCharm
 
+* `python main.py`
+* `FLASK_APP=main flask run`
+
 ### Test different ports
-[How](https://flask.palletsprojects.com/en/1.1.x/cli/#setting-command-options)
+[How](https://flask.palletsprojects.com/en/2.1.x/cli/#setting-command-options)
 
 #### In source file (pyCharm run)
 Like `app.run(port=5001)`
 
-#### In Cygwin / Ubuntu
-* `FLASK_APP='main.py' flask run --port 5002`
-* `FLASK_APP='main.py' FLASK_RUN_PORT=5002 flask run`
+#### In console
+* `FLASK_APP=main flask run --port 5002`
+* `FLASK_APP=main FLASK_RUN_PORT=5002 flask run`
+
+
+### Make it work as a script
+```python
+if __name__ == "__main__":
+    app.run()
+```
 
 ### But What does `if __name__ == “__main__”`: do?
 [Stack answer](https://stackoverflow.com/questions/419163/what-does-if-name-main-do)
