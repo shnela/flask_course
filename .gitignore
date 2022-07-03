@@ -43,3 +43,11 @@ venv
 
 # PyCharm
 .idea
+# Visual Studio Code
+.vscode
+
+# SQLite db
+*.db
+
+# environ
+deployment/environment.env
